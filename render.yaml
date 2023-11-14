@@ -3,5 +3,5 @@
 services:
   - name: web
     type: web
-    buildCommand: npm run build
+    buildCommand: npm install && npm run build
     startCommand: npm run start
