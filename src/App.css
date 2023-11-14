@@ -4,25 +4,25 @@ body {
     background-size: 400% 400%;
     animation: gradient 1s ease infinite;
   }
-  .buttons{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .colorButton{
-    height:15px;
-    width:15px;
-    color: black;
-  }
-  button{
-    height:fit-content;
-    width:fit-content;
-    border-radius: 50%;
-    border: darkslategrey solid 2px;
-    padding: 10px 15px; 
-    margin: 5px;
-    text-align: center;
-    align-items: center;
-  }
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+}
+.colorButton{
+  height:15px;
+  width:15px;
+  color: black;
+}
+button{
+  height:fit-content;
+  width:fit-content;
+  border-radius: 50%;
+  border: darkslategrey solid 2px;
+  padding: 10px 15px; 
+  margin: 5px;
+  text-align: center;
+  align-items: center;
+}
 nav{
   display:flex;
 }
@@ -33,4 +33,26 @@ nav>a:hover{
   background-color: black;
   color: white;
   transition: 1s;
+}
+.bounce {
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+.easterEgg>*{
+  color:black;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
 }

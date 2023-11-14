@@ -13,7 +13,7 @@ function App() {
             <Link to='/home'>HOME</Link>
             <Link to='/colors'>COLORS</Link>
             <Link to='/links'>LINKS</Link>
-            {easterEgg?<Link to='/easter-egg'>EASTER EGG</Link>:null}
+            {easterEgg?<Link className='bounce' to='/easter-egg'>EASTER EGG</Link>:null}
             </nav>
             <main className='all'>
             <Routes>
