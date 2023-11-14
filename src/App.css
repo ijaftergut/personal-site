@@ -50,9 +50,10 @@ nav>a:hover{
   }
 }
 .easterEgg>*{
-  color:black;
+  color:teal;
   text-align: center;
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  line-height: 2;
 }
