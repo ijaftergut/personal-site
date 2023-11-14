@@ -121,7 +121,7 @@ function getColor(answer) {
     return colorMap[answer] || "defaultColor";
   }
   
-const Colors = ()=> {
+const Colors = ({setEasterEgg})=> {
     const [selectedColor, setSelectedColor] = useState(""); 
   const [textColor, setTextColor] = useState(""); 
   const handleButtonClick = (selectedAnswer) => {
@@ -189,6 +189,13 @@ const Colors = ()=> {
     "MistyRose", "Gainsboro", "LightGray", "Silver", "DarkGray", "Gray", "DimGray", "LightSlateGray",
     "SlateGray", "DarkSlateGray", "Black", "Practice"
   ];
+  useEffect(() => {
+    if (selectedColor === "#43B" && textColor === "#43B") {
+      setEasterEgg(true);
+    } else {
+      setEasterEgg(false);
+    }
+  }, [selectedColor, textColor, setEasterEgg]);
   
   return (
     <div>
