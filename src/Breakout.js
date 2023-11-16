@@ -4,8 +4,8 @@ import './breakout.css';
 const Breakout = () => {
   useEffect(() => {
     let board;
-    let boardWidth = 400;
-    let boardHeight = 400;
+    let boardWidth = 350;
+    let boardHeight = 350;
     let context;
 
     // player
@@ -34,7 +34,7 @@ const Breakout = () => {
     };
     // blocks
     let blockArray = [];
-    let blockWidth = 40;
+    let blockWidth = 35;
     let blockHeight = 10;
     let blockColumns = 8;
     let blockRows = 3;
@@ -72,7 +72,7 @@ const Breakout = () => {
       } else if (ball.x <= 0 || ball.x + ball.width >= boardWidth) {
         ball.velocityX *= -1;
       } else if (ball.y + ball.height >= boardHeight) {
-        context.font = "20px verdana";
+        context.font = "14px verdana";
         context.fillText("Game Over: Press 'Space' or Click Here to Restart", -2, 300);
         gameOver = true
       }
@@ -227,8 +227,8 @@ const createBlocks = () => {
   for (let c = 0; c < blockColumns; c++) {
     for (let r = 0; r < blockRows; r++) {
       let block = {
-        x: blockX + c * (blockWidth + 8), // Adjusted this line
-        y: blockY + r * (blockHeight + 8), // Adjusted this line
+        x: blockX + c * (blockWidth + 7), // Adjusted this line
+        y: blockY + r * (blockHeight + 7), // Adjusted this line
         width: blockWidth,
         height: blockHeight,
         break: false,
@@ -242,7 +242,7 @@ const resetGame = () => {
     gameOver = false 
 
     // player
-    let playerWidth = 80;
+    let playerWidth = 60;
     let playerHeight = 10;
     let playerVelocityX = 10;
     player = {
