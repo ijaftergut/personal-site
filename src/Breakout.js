@@ -9,7 +9,7 @@ const Breakout = () => {
     let context;
 
     // player
-    let playerWidth = 500;//
+    let playerWidth = 80;//
     let playerHeight = 10;
     let playerVelocityX = 10;
     let player = {
@@ -22,8 +22,8 @@ const Breakout = () => {
     // ball
     let ballWidth = 10;
     let ballHeight = 10;
-    let ballVelocityX = 15;//
-    let ballVelocityY = 10;//
+    let ballVelocityX = 5;//
+    let ballVelocityY = 3;//
     let ball = {
       x: boardWidth / 2,
       y: boardHeight / 2,
@@ -140,7 +140,7 @@ const Breakout = () => {
       document.addEventListener("keydown", movePlayer);
       board.addEventListener("touchstart", handleTouchStart);
       board.addEventListener("touchmove", handleTouchMove);
-
+      board.addEventListener("click", handleClick);
       //createBlocks
       createBlocks();
     };
@@ -258,7 +258,11 @@ const resetGame = () => {
     score = 0;
     createBlocks();
 }
-
+const handleClick = () => {
+    if (gameOver) {
+      resetGame();
+    }
+  };
 
 
     setupBoard();
