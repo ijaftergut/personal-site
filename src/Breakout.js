@@ -83,7 +83,7 @@ const Breakout = () => {
         ball.velocityX *= -1;
       }
       //blocks
-      context.fillStyle = "violet";
+      context.fillStyle = "#43b";
       for(let i = 0; i < blockArray.length; i++){
         let block = blockArray[i];
         if (!block.break){
@@ -125,7 +125,17 @@ const Breakout = () => {
       context.font = "20px verdana";
       context.fillText(score, 10, 25)
     };
+    const handleMouseMove = (e) => {
+      // Calculate the distance moved
+      const mouseX = e.clientX;
+      const distanceX = mouseX - board.offsetLeft - player.width / 2;
 
+      // Update the player position based on mouse movement
+      let nextPlayerX = distanceX;
+      if (!outOfBounds(nextPlayerX)) {
+        player.x = nextPlayerX;
+      }
+    };
     const setupBoard = () => {
       board = document.getElementById("board");
       board.height = boardHeight;
@@ -141,6 +151,8 @@ const Breakout = () => {
       board.addEventListener("touchstart", handleTouchStart);
       board.addEventListener("touchmove", handleTouchMove);
       board.addEventListener("click", handleClick);
+      board.addEventListener("mousemove", handleMouseMove);
+
       //createBlocks
       createBlocks();
     };
@@ -266,6 +278,10 @@ const handleClick = () => {
 
 
     setupBoard();
+    return () => {
+      // Remove event listener when the component is unmounted
+      board.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return <canvas id="board"></canvas>;
