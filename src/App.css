@@ -57,3 +57,16 @@ nav>a:hover{
   list-style-type: none;
   line-height: 2;
 }
+li{
+  list-style-type: none;
+}
+.hiddenHover {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
