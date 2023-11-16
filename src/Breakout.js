@@ -4,12 +4,12 @@ import './breakout.css';
 const Breakout = () => {
   useEffect(() => {
     let board;
-    let boardWidth = 480;
-    let boardHeight = 480;
+    let boardWidth = 400;
+    let boardHeight = 400;
     let context;
 
     // player
-    let playerWidth = 80;//
+    let playerWidth = 60;//
     let playerHeight = 10;
     let playerVelocityX = 10;
     let player = {
@@ -34,7 +34,7 @@ const Breakout = () => {
     };
     // blocks
     let blockArray = [];
-    let blockWidth = 48;
+    let blockWidth = 40;
     let blockHeight = 10;
     let blockColumns = 8;
     let blockRows = 3;
@@ -108,8 +108,8 @@ const Breakout = () => {
         blockRows = Math.min(blockRows + 1, blockMaxRows)
         let ballWidth = 10;
     let ballHeight = 10;
-    let ballVelocityX = 15;//
-    let ballVelocityY = 10;//
+    let ballVelocityX = 5;//
+    let ballVelocityY = 3;//
     ball = {
       x: boardWidth / 2,
       y: boardHeight / 2,
@@ -227,8 +227,8 @@ const createBlocks = () => {
   for (let c = 0; c < blockColumns; c++) {
     for (let r = 0; r < blockRows; r++) {
       let block = {
-        x: blockX + c * (blockWidth + 10), // Adjusted this line
-        y: blockY + r * (blockHeight + 10), // Adjusted this line
+        x: blockX + c * (blockWidth + 8), // Adjusted this line
+        y: blockY + r * (blockHeight + 8), // Adjusted this line
         width: blockWidth,
         height: blockHeight,
         break: false,
