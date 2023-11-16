@@ -22,8 +22,8 @@ const Breakout = () => {
     // ball
     let ballWidth = 10;
     let ballHeight = 10;
-    let ballVelocityX = 5;//
-    let ballVelocityY = 3;//
+    let ballVelocityX = 3;//
+    let ballVelocityY = 2;//
     let ball = {
       x: boardWidth / 2,
       y: boardHeight / 2,
@@ -50,6 +50,8 @@ const Breakout = () => {
     //gameover
     let gameOver = false;
 
+    let currentLevel = 1;
+    const maxLevels = 3;
 
 
     const update = () => {
@@ -102,23 +104,31 @@ const Breakout = () => {
             context.fillRect(block.x, block.y, block.width, block.height)
         }
       }
-      //next level
-      if ( blockCount === 0){
-        score += 100*blockRows*blockColumns;
-        blockRows = Math.min(blockRows + 1, blockMaxRows)
-        let ballWidth = 10;
-    let ballHeight = 10;
-    let ballVelocityX = 5;//
-    let ballVelocityY = 3;//
-    ball = {
-      x: boardWidth / 2,
-      y: boardHeight / 2,
-      width: ballWidth,
-      height: ballHeight,
-      velocityX: ballVelocityX,
-      velocityY: ballVelocityY,
-    };
+       // Next level logic
+       if (blockCount === 0 && currentLevel < maxLevels) {
+        currentLevel += 1;
+        score += 100 * blockRows * blockColumns;
+        blockRows = Math.min(blockRows + 1, blockMaxRows);
+
+        // Reset ball position and velocity
+        ball = {
+          x: boardWidth / 2,
+          y: boardHeight / 2,
+          width: ballWidth,
+          height: ballHeight,
+          velocityX: ballVelocityX,
+          velocityY: ballVelocityY,
+        };
+
+        // Recreate blocks for the next level
         createBlocks();
+      } else if (blockCount === 0 && currentLevel === maxLevels) {
+        // Display game over screen for the final level
+        context.font = "14px verdana";
+        context.fillStyle = "black";
+        context.fillText("Congratulations! You completed all levels.", -2, 300);
+        context.fillText("Press 'Space' or Click Here to Restart", -2, 320);
+        gameOver = true;
       }
 
       //score
@@ -222,25 +232,72 @@ const Breakout = () => {
 
     let initialTouchX;
 
+
 const createBlocks = () => {
   blockArray = [];
-  for (let c = 0; c < blockColumns; c++) {
-    for (let r = 0; r < blockRows; r++) {
-      let block = {
-        x: blockX + c * (blockWidth + 7), // Adjusted this line
-        y: blockY + r * (blockHeight + 7), // Adjusted this line
-        width: blockWidth,
-        height: blockHeight,
-        break: false,
-      };
-      blockArray.push(block);
-    }
+
+  // Different block structures for each level
+  switch (currentLevel) {
+    case 1:
+      // Original structure
+      for (let c = 0; c < blockColumns; c++) {
+        for (let r = 0; r < blockRows; r++) {
+          let block = {
+            x: blockX + c * (blockWidth + 7),
+            y: blockY + r * (blockHeight + 7),
+            width: blockWidth,
+            height: blockHeight,
+            break: false,
+          };
+          blockArray.push(block);
+        }
+      }
+      break;
+
+    case 2:
+      // Pyramid structure
+      for (let r = 0; r < blockRows; r++) {
+        for (let c = 0; c <= r; c++) {
+          let block = {
+            x: blockX + (c - r / 2) * (blockWidth + 7) + boardWidth / 2,
+            y: blockY + r * (blockHeight + 7),
+            width: blockWidth,
+            height: blockHeight,
+            break: false,
+          };
+          blockArray.push(block);
+        }
+      }
+      break;
+
+    case 3:
+      // Custom designed structure (centered cross pattern)
+      for (let c = 0; c < blockColumns; c++) {
+        for (let r = 0; r < blockRows; r++) {
+          if (c === blockColumns / 2 || r === blockRows / 2) {
+            let block = {
+              x: blockX + c * (blockWidth + 7) + boardWidth / 4,
+              y: blockY + r * (blockHeight + 7) + boardHeight / 4,
+              width: blockWidth,
+              height: blockHeight,
+              break: false,
+            };
+            blockArray.push(block);
+          }
+        }
+      }
+      break;
+
+    default:
+      break;
   }
+
   blockCount = blockArray.length;
 };
+
 const resetGame = () => {
     gameOver = false 
-
+    currentLevel = 1
     // player
     let playerWidth = 60;
     let playerHeight = 10;
@@ -279,7 +336,6 @@ const handleClick = () => {
 
     setupBoard();
     return () => {
-      // Remove event listener when the component is unmounted
       board.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
