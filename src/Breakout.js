@@ -4,8 +4,8 @@ import './breakout.css';
 const Breakout = () => {
   useEffect(() => {
     let board;
-    let boardWidth = 500;
-    let boardHeight = 500;
+    let boardWidth = 480;
+    let boardHeight = 480;
     let context;
 
     // player
@@ -34,7 +34,7 @@ const Breakout = () => {
     };
     // blocks
     let blockArray = [];
-    let blockWidth = 50;
+    let blockWidth = 48;
     let blockHeight = 10;
     let blockColumns = 8;
     let blockRows = 3;
