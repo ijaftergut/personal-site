@@ -340,7 +340,7 @@ const handleClick = () => {
     };
   }, []);
 
-  return <canvas id="board"></canvas>;
+  return <canvas className='all' id="board"></canvas>;
 };
 
 export default Breakout;

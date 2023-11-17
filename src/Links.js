@@ -7,7 +7,7 @@ const Links = ()=> {
         window.location.href = "https://three-wishes.onrender.com";
       };
   return (
-    <div>
+    <div className='all'>
       <h2>Links</h2>
       <h4>Visit Harmonic Harbor:</h4>
       <button className="button" onClick={renderLinkHarmonicHarbor}>Harmonic Harbor</button>

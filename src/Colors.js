@@ -198,9 +198,9 @@ const Colors = ({setEasterEgg})=> {
   }, [selectedColor, textColor, setEasterEgg]);
   
   return (
-    <div>
+    <div  className='all'>
       <h2>Color Design</h2>
-      <div className="body buttons">
+      <div className="body buttons all">
    
    <h4>Background Color: </h4>
    <h4>

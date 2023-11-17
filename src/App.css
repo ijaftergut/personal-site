@@ -70,3 +70,8 @@ li{
   visibility: visible;
   opacity: 1;
 }
+.all>*{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
