@@ -5,7 +5,7 @@ const Home = ()=> {
   const projectLinks = [
     'https://three-wishes.onrender.com',
     'https://harmonic-harbor.onrender.com',
-    'https://isaac-j8em.onrender.com/colors'
+    'https://isaac-j8em.onrender.com/colors#/colors'
   ];
   useEffect(() => {
     const intervalId = setInterval(() => {
