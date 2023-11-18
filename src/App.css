@@ -75,3 +75,33 @@ li{
   justify-content: center;
   align-items: center;
 }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.project-showcase {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  
+}
+
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.image{
+  height: auto;
+  display: block;
+  width: 300px;
+  height: 300px;
+  
+}
