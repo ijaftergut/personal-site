@@ -30,7 +30,7 @@ const Home = ()=> {
   return (
     <div className='all'>
       <h2>Welcome to my Portfolio</h2>
-      <p>Here you will find access to many projects I have worked on, or am in the process of deveolping. 
+      <p>Here you will find access to many projects I have worked on, or am in the process of developing. 
         This website itself hosts several projects, from a color selector designed to help choose colors for a webpage, to classic games like breakout designed entirely through css and javascript. Also included is access to Links which contains my other more complex web development projects.
       </p>
       <section>
@@ -39,10 +39,10 @@ const Home = ()=> {
           <div className="carousel-container" style={showSlide(currentIndex)}>
             {projectImages.map((image, index) => (
               <div key={index} className="carousel-slide">
-                <span className='image'></span>
+                <span className='span'></span>
                 <a href={projectLinks[index]} target="_blank" rel="noopener noreferrer">
                 <img className='image' src={image} alt={`Project ${index + 1}`} /></a>
-                <span className='image'></span>
+                <span className='span'></span>
               </div>
             ))}
           </div>
