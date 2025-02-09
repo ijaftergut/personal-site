@@ -5,6 +5,7 @@ import Colors from './Colors';
 import Home from './Home';
 import EasterEgg from './EasterEgg';
 import Breakout from './Breakout';
+import Experimental from './Experimental';
 import React, { useState } from 'react';
 function App() {
   const [easterEgg, setEasterEgg]=useState(false)
@@ -15,6 +16,7 @@ function App() {
             <Link to='/colors'>COLORS</Link>
             <Link to='/links'>LINKS</Link>
             <Link to='/breakout'>BREAKOUT</Link>
+            <Link to='/experimental'>EXPERIMENTAL</Link>
             {easterEgg?<Link className='bounce' to='/easter-egg'>EASTER EGG</Link>:null}
             </nav>
             <main className='all'>
@@ -31,6 +33,9 @@ function App() {
               />}/>
               <Route path='/*' element={
                 <Home
+              />}/>
+              <Route path='/experimental' element={
+              <Experimental
               />}/>
              {easterEgg? <Route path='/easter-egg' element={
                 <EasterEgg
